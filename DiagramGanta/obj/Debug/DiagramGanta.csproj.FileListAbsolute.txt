@@ -1,0 +1,16 @@
+C:\Users\Asus\source\repos\Generation-Objects\DiagramGanta\bin\Debug\DiagramGanta.exe.config
+C:\Users\Asus\source\repos\Generation-Objects\DiagramGanta\bin\Debug\DiagramGanta.exe
+C:\Users\Asus\source\repos\Generation-Objects\DiagramGanta\bin\Debug\DiagramGanta.pdb
+C:\Users\Asus\source\repos\Generation-Objects\DiagramGanta\obj\Debug\DiagramGanta.csproj.AssemblyReference.cache
+C:\Users\Asus\source\repos\Generation-Objects\DiagramGanta\obj\Debug\DiagramGanta.csproj.SuggestedBindingRedirects.cache
+C:\Users\Asus\source\repos\Generation-Objects\DiagramGanta\obj\Debug\MainWindow.g.cs
+C:\Users\Asus\source\repos\Generation-Objects\DiagramGanta\obj\Debug\App.g.cs
+C:\Users\Asus\source\repos\Generation-Objects\DiagramGanta\obj\Debug\DiagramGanta_MarkupCompile.cache
+C:\Users\Asus\source\repos\Generation-Objects\DiagramGanta\obj\Debug\DiagramGanta_MarkupCompile.lref
+C:\Users\Asus\source\repos\Generation-Objects\DiagramGanta\obj\Debug\MainWindow.baml
+C:\Users\Asus\source\repos\Generation-Objects\DiagramGanta\obj\Debug\DiagramGanta.g.resources
+C:\Users\Asus\source\repos\Generation-Objects\DiagramGanta\obj\Debug\DiagramGanta.Properties.Resources.resources
+C:\Users\Asus\source\repos\Generation-Objects\DiagramGanta\obj\Debug\DiagramGanta.csproj.GenerateResource.cache
+C:\Users\Asus\source\repos\Generation-Objects\DiagramGanta\obj\Debug\DiagramGanta.csproj.CoreCompileInputs.cache
+C:\Users\Asus\source\repos\Generation-Objects\DiagramGanta\obj\Debug\DiagramGanta.exe
+C:\Users\Asus\source\repos\Generation-Objects\DiagramGanta\obj\Debug\DiagramGanta.pdb

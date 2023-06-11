@@ -20,11 +20,11 @@ namespace DiagramGanta
     /// </summary>
     public partial class MainWindow : Window
     {
-        private Grid diagram = new Grid();
-        private DatePicker startDate = new DatePicker();
-        private DatePicker endDate = new DatePicker();
-        private List<String> notions = new List<String>();
-        private TextBox textBox = new TextBox
+        Grid diagram = new Grid();
+        DatePicker startDate = new DatePicker();
+        DatePicker endDate = new DatePicker();
+        List<String> notions = new List<String>();
+        TextBox textBox = new TextBox
         {
             MaxLength = 20,
             Width = 200
@@ -95,6 +95,8 @@ namespace DiagramGanta
                 error += "Select end date\n";
             if (String.IsNullOrWhiteSpace(textBox.Text))
                 error += "Enter notion";
+            if (startDate.SelectedDate.Value > endDate.SelectedDate.Value)
+                error += "start date > end date\n";
             if (!String.IsNullOrWhiteSpace(error))
             {
                 MessageBox.Show(error);

@@ -21,15 +21,18 @@ namespace DiagramGanta
     public partial class MainWindow : Window
     {
         private Grid diagram = new Grid();
-        private Grid dateGrid = new Grid();
         private DatePicker startDate = new DatePicker();
         private DatePicker endDate = new DatePicker();
+        private List<String> notions = new List<String>();
+        private TextBox textBox = new TextBox
+        {
+            MaxLength = 20,
+            Width = 200
+        };
         public MainWindow()
         {
             InitializeComponent();
             InitializeElements();
-
-            diagram.Children.Add(dateGrid);
 
         }
         private void InitializeElements()
@@ -38,12 +41,16 @@ namespace DiagramGanta
             {
                 Height = new GridLength(25)
             };
-            RowDefinition row2 = new RowDefinition();
+            RowDefinition row2 = new RowDefinition()
+            {
+                Height = new GridLength(25)
+            };
             diagram.RowDefinitions.Add(row1);
             diagram.RowDefinitions.Add(row2);
             StackPanel tools = new StackPanel();
             tools.Children.Add(startDate);
             tools.Children.Add(endDate);
+            tools.Children.Add(textBox);
             Button setRow = new Button
             {
                 Width = 200,
@@ -60,55 +67,64 @@ namespace DiagramGanta
             {
                 TextBlock textBlock = new TextBlock
                 {
-                    Text = i.ToString(),
-                    Margin = new Thickness(0, 0, 20, 0)
+                    Text = i.ToString()
                 };
-                date.Children.Add(textBlock);
+                ColumnDefinition column = new ColumnDefinition();
+                diagram.ColumnDefinitions.Add(column);
+                Grid.SetRow(textBlock, 1);
+                Grid.SetColumn(textBlock, i);
+                diagram.Children.Add(textBlock);
             }
+            ColumnDefinition column2 = new ColumnDefinition()
+            {
+                Width = new GridLength(40)
+            };
+            diagram.ColumnDefinitions.Add(column2);
             GMainGrid.Children.Add(diagram);
-
             Grid.SetRow(tools, 0);
+            Grid.SetColumnSpan(tools, 30);
             diagram.Children.Add(tools);
-            Grid.SetRow(date, 1);
-            diagram.Children.Add(date);
-            
-
         }
         private void AddRow_Click(object sender, RoutedEventArgs e)
         {
-            RowDefinition row = new RowDefinition();
-            diagram.RowDefinitions.Add(row);
-            Grid.SetRow(dateGrid, diagram.RowDefinitions.Count - 1);
             Random rnd = new Random();
             var error = String.Empty;
-            if(startDate.SelectedDate == null)
+            if (startDate.SelectedDate == null)
                 error += "Select start date\n";
             if (endDate.SelectedDate == null)
                 error += "Select end date\n";
+            if (String.IsNullOrWhiteSpace(textBox.Text))
+                error += "Enter notion";
             if (!String.IsNullOrWhiteSpace(error))
             {
                 MessageBox.Show(error);
                 return;
             }
-            RowDefinition rowDates = new RowDefinition
+            RowDefinition row = new RowDefinition()
             {
-                Height = new GridLength(30)
+                Height = new GridLength(50)
             };
-            dateGrid.RowDefinitions.Add(rowDates);
-            for (int i = 1; i < 31; i++)
+            diagram.RowDefinitions.Add(row);
+            TextBlock textBlock = new TextBlock()
             {
-                ColumnDefinition column = new ColumnDefinition();
-                dateGrid.ColumnDefinitions.Add(column);
-            }
+                Text = textBox.Text,
+                TextWrapping = TextWrapping.Wrap,
+                Width = 30
+            };
             int difference = endDate.SelectedDate.Value.Day - startDate.SelectedDate.Value.Day;
             StackPanel rowPanel = new StackPanel
             {
                 Orientation = Orientation.Horizontal,
                 Background = new SolidColorBrush(Color.FromRgb((byte)rnd.Next(0,255), (byte)rnd.Next(0, 255), (byte)rnd.Next(0, 255)))
             };
-            Grid.SetRow(rowPanel, 0);
-            Grid.SetColumnSpan(rowPanel, difference+1);
-            dateGrid.Children.Add(rowPanel);
+            int allRows = diagram.RowDefinitions.Count;
+            Grid.SetRow(rowPanel, allRows-1);
+            Grid.SetColumn(rowPanel, startDate.SelectedDate.Value.Day);
+            Grid.SetColumnSpan(rowPanel, difference);
+            diagram.Children.Add(rowPanel);
+            Grid.SetRow(textBlock, allRows - 1);
+            Grid.SetColumn(textBlock, 0);
+            diagram.Children.Add(textBlock);
         }
     }
 }
